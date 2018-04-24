@@ -14,5 +14,6 @@
 1. You run maven clean install then babel watching your target folder statement
 2. After maven run, you should run tomcat run.
 
-You get the performance. because auto transfer ts folder's files to the js folder's files and hot deploy in was 
+You get the performance. 
+because babel auto transfer typescript to javascript, then was run hotdeploy.
  
