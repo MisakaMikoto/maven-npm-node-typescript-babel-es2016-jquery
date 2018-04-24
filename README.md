@@ -1,4 +1,4 @@
-# maven-npm-typescript-babel-ecs2016
+# maven-npm-typescript-babel-es2016
 
 # Spec ?
 1. build tool -> maven
