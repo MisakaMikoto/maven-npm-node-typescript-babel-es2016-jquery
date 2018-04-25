@@ -1,25 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Factory = /** @class */ (function () {
-    function Factory() {
+var ArcheTypeFactory = /** @class */ (function () {
+    function ArcheTypeFactory() {
         this.figures = [];
     }
-    Factory.prototype.create = function (x, y, width, height, targetObject) {
+    ArcheTypeFactory.prototype.operate = function (x, y, width, height, targetObject) {
         var obj = new targetObject(x, y, width, height);
         this.push(obj);
     };
     ;
-    Factory.prototype.push = function (targetObject) {
+    ArcheTypeFactory.prototype.push = function (targetObject) {
         this.figures.push(targetObject);
     };
-    Object.defineProperty(Factory.prototype, "getFigures", {
+    Object.defineProperty(ArcheTypeFactory.prototype, "getFigures", {
         get: function () {
             return this.figures;
         },
         enumerable: true,
         configurable: true
     });
-    return Factory;
+    return ArcheTypeFactory;
 }());
-exports.Factory = Factory;
+exports.ArcheTypeFactory = ArcheTypeFactory;
 ;

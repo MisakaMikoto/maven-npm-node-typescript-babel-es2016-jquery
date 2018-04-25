@@ -10,12 +10,12 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var figure_js_1 = require("./figure.js");
+var archetype_js_1 = require("./archetype.js");
 var Rectangle = /** @class */ (function (_super) {
     __extends(Rectangle, _super);
     function Rectangle() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return Rectangle;
-}(figure_js_1.Figure));
+}(archetype_js_1.Figure));
 exports.Rectangle = Rectangle;

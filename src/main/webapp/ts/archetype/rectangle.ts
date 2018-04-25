@@ -1,4 +1,4 @@
-import {Figure} from "./figure.js";
+import {Figure} from "./archetype.js";
 
 export class Rectangle extends Figure {
 }
