@@ -1,19 +1,22 @@
 {
-  "name": "misaka-typescript-babel",
+  "name": "misaka-typescript",
   "version": "0.0.1",
   "description": "typescript babel",
   "scripts": {
-    "build": "npm update | babel ./src/main/webapp/ts --out-dir -d ./src/main/webapp/js --extensions \".ts,.tsx\" -w"
+    "compile": "tsc",
+    "build": "npm run compile"
   },
-  "author": "hws@wemakeprice.com",
+  "author": "someanspretty@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.46",
     "@babel/core": "^7.0.0-beta.46",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.46",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.46",
-    "@babel/preset-typescript": "^7.0.0-beta.46",
     "@babel/preset-es2016": "^7.0.0-beta.46",
+    "@babel/preset-typescript": "^7.0.0-beta.46",
+    "@types/jquery": "^3.3.1",
+    "@types/node": "^9.6.6",
     "typescript": "^2.8.1"
   }
 }

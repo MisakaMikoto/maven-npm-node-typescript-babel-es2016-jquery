@@ -1,0 +1,21 @@
+{
+  "include": [
+    "./src/main/webapp/ts",
+    "./node_modules/@types/jquery/index.d.ts"
+  ],
+
+  "compilerOptions": {
+    "outDir": "./src/main/webapp/js",
+    "target": "es6",
+    "module": "es6",
+    "strict": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowJs": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks":false,
+    "baseUrl": "."
+  }
+}

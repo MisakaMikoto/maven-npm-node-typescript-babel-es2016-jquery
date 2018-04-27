@@ -54,20 +54,6 @@
                         </configuration>
                     </execution>
                 </executions>
-
-                <configuration>
-                    <nodeVersion>v4.6.0</nodeVersion>
-                    <!--&lt;!&ndash; optional: with node version greater than 4.0.0 will use npm provided by node distribution &ndash;&gt;-->
-                    <!--<npmVersion>2.15.9</npmVersion>-->
-
-                    <!--&lt;!&ndash; optional: where to download node and npm from. Defaults to https://nodejs.org/dist/ &ndash;&gt;-->
-                    <!--<downloadRoot>http://myproxy.example.org/nodejs/</downloadRoot>-->
-
-                    <!-- critical node package install folder -->
-                    <!-- default folder path is node, but must be node_modules -->
-                    <!-- because this node root sync with package.json libs -->
-                    <installDirectory>node_modules</installDirectory>
-                </configuration>
             </plugin>
         </plugins>
     </build>
