@@ -1,8 +1,10 @@
 import {CanvasEventHandler} from "../interface/CanvasEventHandler.js";
-import {LayoutEvent} from "./LayoutEvent.js";
+import {LayoutFactory} from "../../factory/class/LayoutFactory.js";
+import {LayoutEventRenderer} from "../../renderer/class/LayoutEventRenderer.js";
+import {CanvasLayoutEvent} from "./CanvasLayoutEvent.js";
 
 export class CanvasEventManager implements CanvasEventHandler {
-    private static layoutEvent: LayoutEvent = new LayoutEvent();
+    private static canvasLayoutEvent: CanvasLayoutEvent = new CanvasLayoutEvent(new LayoutFactory(), new LayoutEventRenderer());
 
     initializeEvents(): void {
         this.addLayoutEvents();
@@ -10,7 +12,7 @@ export class CanvasEventManager implements CanvasEventHandler {
     }
 
     addLayoutEvents(): void {
-        CanvasEventManager.layoutEvent.addLayoutButtonEvent();
+        CanvasEventManager.canvasLayoutEvent.addLayoutButtonEvent();
     }
 
     addPreviewEvents(): void {
