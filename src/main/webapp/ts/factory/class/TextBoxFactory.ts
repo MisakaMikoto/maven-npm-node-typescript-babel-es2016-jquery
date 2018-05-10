@@ -1,10 +1,10 @@
-import {Layout} from "../../layout/Layout.js";
+import {TextBox} from "../../layout/TextBox.js";
 import {Factory} from "./Factory.js";
 
-export class LayoutFactory extends Factory{
-    public operate<T extends Layout>
+export class TextBoxFactory extends Factory{
+    public operate<T extends TextBox>
     (x: number, y: number, width: number, height: number, targetObject: new(x: number, y: number, width: number, heigth: number)
-        => T): Layout {
+        => T): TextBox {
 
         let obj = new targetObject(x, y, width, height);
         this.push(obj);
@@ -12,9 +12,9 @@ export class LayoutFactory extends Factory{
         return obj;
     };
 
-    public change<T extends Layout>
+    public change<T extends TextBox>
     (index: number, x: number, y: number, width: number, height: number, targetObject: new(x: number, y: number, width: number, heigth: number)
-        => T): Layout {
+        => T): TextBox {
 
         let obj = new targetObject(x, y, width, height);
         this.modify(index, obj);
@@ -26,7 +26,7 @@ export class LayoutFactory extends Factory{
         this.remove(index);
     };
 
-    private push<T extends Layout>(targetObject: T): void {
+    private push<T extends TextBox>(targetObject: T): void {
         this.getArchetypes().push(targetObject);
     };
 
@@ -34,7 +34,7 @@ export class LayoutFactory extends Factory{
         this.getArchetypes().splice(index, 1);
     };
 
-    private modify(index: number, layout: Layout): void {
+    private modify(index: number, layout: TextBox): void {
         this.getArchetypes()[index] = layout;
     }
 }

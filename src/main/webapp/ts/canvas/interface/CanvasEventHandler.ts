@@ -1,4 +1,5 @@
 export interface CanvasEventHandler {
     addLayoutEvents(): void;
-    addPreviewEvents(): void;
+    addTextBoxEvents(): void;
+    addTabEvents(): void;
 }

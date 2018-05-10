@@ -1,21 +1,49 @@
-import {frRendererDrawStrokeRect} from "../../renderer/function/LayoutEventRenderFunctions.js";
-import {Layout} from "../../layout/layout.js";
+import {
+    flrRendererDrawStrokeRect,
+    flrRendererEraseStrokeRect, flrRendererModifyStrokeRect
+} from "../../renderer/function/LayoutEventRenderFunction.js";
+import {Layout} from "../../layout/Layout.js";
 import {CanvasEvent} from "./CanvasEvent.js";
-import {flBindClickAddEvent, flGetLayoutInformation} from "../function/LayoutEventFunction.js";
+import {
+    flBindAddEvent, flBindModifyEvent, flBindRemoveEvent, flGetAddLayoutInformation, flGetModifyLayoutInformation
+} from "../function/LayoutEventFunction.js";
 
 export class CanvasLayoutEvent extends CanvasEvent {
-    addLayoutButtonEvent(): void {
-        flBindClickAddEvent(this.addLayout.bind(this));
+    addLayoutButtonEvents(): void {
+        flBindAddEvent(this.addLayout.bind(this));
+        flBindRemoveEvent(this.removeLayout.bind(this));
+        flBindModifyEvent(this.modifyLayout.bind(this));
     }
 
-    addLayout(): void {
-        let information = flGetLayoutInformation();
-        let layout = this.getFactory.operate(information.x, information.y, information.width, information.height, Layout);
-        this.getRenderer.draw(frRendererDrawStrokeRect, layout);
+    private addLayout(eventTargetElement: JQuery): void {
+        let layout = this.getAddRectangleInformation(eventTargetElement);
+        this.getRenderer.draw(flrRendererDrawStrokeRect, layout);
     }
 
-    removeLayout(index: number): void {
-        this.getFactory.getLayouts.splice(index, 1);
+    private removeLayout(index: number): void {
+        this.getRemoveRectangleInformation(index);
+        this.getRenderer.erase(flrRendererEraseStrokeRect, this.getFactory.getArchetypes());
+    }
+
+    private modifyLayout(index: number, eventTargetElement: JQuery): void {
+        this.getModifyRectangleInformation(index, eventTargetElement);
+        this.getRenderer.modify(flrRendererModifyStrokeRect, this.getFactory.getArchetypes());
+    }
+
+    private getAddRectangleInformation(eventTargetElement: JQuery): Layout {
+        let information = flGetAddLayoutInformation(eventTargetElement);
+        let layout = this.getFactory.operate(information.getX, information.getY, information.getWidth, information.getHeight, Layout);
+        return layout;
+    }
+
+    private getRemoveRectangleInformation(index: number): void {
+        this.getFactory.breakDown(index);
+    }
+
+    private getModifyRectangleInformation(index: number, eventTargetElement: JQuery): Layout {
+        let information = flGetModifyLayoutInformation(eventTargetElement);
+        let layout = this.getFactory.change(index, information.getX, information.getY, information.getWidth, information.getHeight, Layout);
+        return layout;
     }
 }
 

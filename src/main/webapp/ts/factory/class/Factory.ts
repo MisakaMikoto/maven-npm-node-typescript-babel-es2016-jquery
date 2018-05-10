@@ -1,21 +1,20 @@
 import {Runnable} from "../interface/Runnable.js";
-import {Layout} from "../../layout/layout.js";
+import {Archetype} from "../../archetype/class/ArcheType.js";
 
-export class Factory implements Runnable{
-    private layouts: Array<Layout> = [];
+export abstract class Factory implements Runnable {
+    private archeTypes: Array<Archetype> = [];
 
-    public operate<T extends Layout>(x: string, y: string, width: string, height: string, targetObject: new(x: string, y: string, width: string, heigth: string) => T): Layout {
-        let obj = new targetObject(x, y, width, height);
-        this.push(obj);
-
-        return obj;
-    };
-
-    private push<T extends Layout>(targetObject: T): void {
-        this.layouts.push(targetObject);
+    operate<T extends Archetype>(x: number, y: number, width: number, height: number, T: any): Archetype {
+        throw new Error("Method not implemented.");
+    }
+    change<T extends Archetype>(index: number, x: number, y: number, width: number, height: number, T: any): Archetype {
+        throw new Error("Method not implemented.");
+    }
+    breakDown(index: number): void {
+        throw new Error("Method not implemented.");
     }
 
-    public get getLayouts(): Array<Layout> {
-        return this.layouts;
+    public getArchetypes(): Array<Archetype> {
+        return this.archeTypes;
     }
-};
+}

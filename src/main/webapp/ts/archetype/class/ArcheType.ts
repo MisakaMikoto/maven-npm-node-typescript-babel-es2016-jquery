@@ -4,11 +4,11 @@ export class Archetype {
     private width: number;
     private height: number;
 
-    constructor(x: string, y: string, width: string, height: string) {
-        this.x = parseInt(x);
-        this.y = parseInt(y);
-        this.width = parseInt(width);
-        this.height = parseInt(height);
+    constructor(x: number, y: number, width: number, height: number) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
     };
 
     public get getX(): number {
