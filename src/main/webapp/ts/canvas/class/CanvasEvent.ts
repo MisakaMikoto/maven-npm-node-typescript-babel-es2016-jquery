@@ -10,11 +10,11 @@ export class CanvasEvent {
         this.renderer = renderer;
     }
 
-    public get getFactory(): Factory {
+    public get getFactory(): any {
         return this.factory;
     }
 
-    public get getRenderer(): Renderer {
+    public get getRenderer(): any {
         return this.renderer;
     }
 }

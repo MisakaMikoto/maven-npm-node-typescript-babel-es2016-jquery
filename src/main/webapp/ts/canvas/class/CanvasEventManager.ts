@@ -1,30 +1,31 @@
 import {CanvasEventHandler} from "../interface/CanvasEventHandler.js";
+import {CanvasLayoutEvent} from "./CanvasLayoutEvent.js";
 import {LayoutFactory} from "../../factory/class/LayoutFactory.js";
 import {LayoutEventRenderer} from "../../renderer/class/LayoutEventRenderer.js";
-import {CanvasLayoutEvent} from "./CanvasLayoutEvent.js";
-import {TextBoxEventRenderer} from "../../renderer/class/TextBoxEventRenderer.js";
 import {CanvasTextBoxEvent} from "./CanvasTextBoxEvent.js";
 import {TextBoxFactory} from "../../factory/class/TextBoxFactory.js";
+import {TextBoxEventRenderer} from "../../renderer/class/TextBoxEventRenderer.js";
 import {flmBindTabEvent, flmChangeTab} from "../function/LayoutEventManagerFunction.js";
 
 export class CanvasEventManager implements CanvasEventHandler {
-    private static canvasLayoutEvent: CanvasLayoutEvent =
+    private canvasLayoutEvent: CanvasLayoutEvent =
         new CanvasLayoutEvent(new LayoutFactory(), new LayoutEventRenderer());
 
-    private static canvasTextBoxEvent: CanvasTextBoxEvent =
+    private canvasTextBoxEvent: CanvasTextBoxEvent =
         new CanvasTextBoxEvent(new TextBoxFactory(), new TextBoxEventRenderer());
 
     initializeEvents(): void {
-        this.addLayoutEvents();
         this.addTabEvents();
+        this.addLayoutEvents();
+        this.addTextBoxEvents();
     }
 
     addLayoutEvents(): void {
-        CanvasEventManager.canvasLayoutEvent.addLayoutButtonEvents();
+        this.canvasLayoutEvent.addLayoutButtonEvents();
     }
 
     addTextBoxEvents(): void {
-        CanvasEventManager.canvasTextBoxEvent.addTextBoxButtonEvents();
+        this.canvasTextBoxEvent.addTextBoxButtonEvents();
     }
 
     addTabEvents(): void {

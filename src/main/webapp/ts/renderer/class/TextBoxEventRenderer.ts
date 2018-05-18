@@ -1,16 +1,17 @@
 import {TextBox} from "../../layout/TextBox.js";
+import {Archetype} from "../../archetype/class/ArcheType.js";
 import {Renderer} from "./Renderer.js";
 
 export class TextBoxEventRenderer extends Renderer{
-    draw<T extends TextBox>(renderDrawFunction: Function, layout: T): void {
-        renderDrawFunction.apply(renderDrawFunction, [layout]);
+    draw<T extends TextBox>(renderDrawFunction: Function, ctx: any, textBox: T): void {
+        renderDrawFunction.apply(renderDrawFunction, [ctx, textBox]);
     }
 
-    erase<T extends TextBox>(renderEraseFunction: Function, layouts: Array<TextBox>): void {
-        renderEraseFunction.apply(renderEraseFunction, [layouts]);
+    erase<T extends TextBox>(renderEraseFunction: Function, ctx: any, textBoxes: Array<Archetype>): void {
+        renderEraseFunction.apply(renderEraseFunction, [ctx, textBoxes]);
     }
 
-    modify<T extends TextBox>(renderModifyFunction: Function, layouts: Array<TextBox>): void {
-        renderModifyFunction.apply(renderModifyFunction, [layouts]);
+    modify<T extends TextBox>(renderModifyFunction: Function, ctx: any, elements: Array<Archetype>): void {
+        renderModifyFunction.apply(renderModifyFunction, [ctx, elements]);
     }
 }
